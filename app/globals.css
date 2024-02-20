@@ -24,17 +24,3 @@ body {
     text-wrap: balance;
   }
 }
-.box {
-  border: 1px solid #333;
-  background-color: #ddd;
-  padding: 10px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.text {
-  text-align: center;
-}
-

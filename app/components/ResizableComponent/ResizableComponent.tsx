@@ -24,7 +24,7 @@ export const ResizableComponent = () => {
     const saveElementToLocalStorage = (newElement) => {
         const updatedElements = [...elements, newElement];
         localStorage.setItem('elements', JSON.stringify(updatedElements));
-        fetchElementsFromLocalStorage(); // Refresh the elements from localStorage
+        fetchElementsFromLocalStorage(); 
     };
 
     const updateElementInLocalStorage = (updatedElement) => {
@@ -32,7 +32,7 @@ export const ResizableComponent = () => {
             element._id === updatedElement._id ? updatedElement : element
         );
         localStorage.setItem('elements', JSON.stringify(updatedElements));
-        fetchElementsFromLocalStorage(); // Refresh the elements from localStorage
+        fetchElementsFromLocalStorage(); 
     };
 
     const fetchOperationCounts = async () => {
@@ -50,10 +50,10 @@ export const ResizableComponent = () => {
     const handleAdd = async () => {
         try {
             const response = await axios.post('http://localhost:8080/data', { content: data });
-            const newElement = { ...response.data, content: data }; // Simulate full element structure
+            const newElement = { ...response.data, content: data };
             saveElementToLocalStorage(newElement);
             setData('');
-            fetchOperationCounts(); // Refresh operation counts
+            fetchOperationCounts();
         } catch (error) {
             console.error('Failed to add data:', error);
         }
@@ -66,9 +66,9 @@ export const ResizableComponent = () => {
         }
         try {
             await axios.put(`http://localhost:8080/data/${selectedElementId}`, { content: data });
-            const updatedElement = { _id: selectedElementId, content: data }; // Simulate updated element structure
+            const updatedElement = { _id: selectedElementId, content: data };
             updateElementInLocalStorage(updatedElement);
-            fetchOperationCounts(); // Refresh operation counts
+            fetchOperationCounts(); 
             setData('');
             setSelectedElementId('');
         } catch (error) {
@@ -85,7 +85,7 @@ export const ResizableComponent = () => {
         <>
             <Resizable
                 defaultSize={{
-                    width: 320,
+                    width: 700,
                     height: 420,
                 }}
                 style={{ border: '1px solid black', padding: '20px' }}
